@@ -10,20 +10,13 @@
 
     <!--Description-->
     
-        <meta name="description" content="My TopicsData Structure &amp;amp; Algorithms
-七大排序算法解析与Python实现
+        <meta name="description" content="读这篇文章有感。我来总结一下，便于记忆。
 
-字符串匹配Python解析
-
-栈与队列的list实现
+最小二乘法（Least Square Method）适用于二维空间，用直线 y=ax+b 对二维空间（平面）的数据进行拟合。将true label与直线评测出的值的偏差的平方和作为最小条件来选择参数a，b。
 
 
-Complie Skills
-Hexo搭建博客并发布到github
 
-如何在markdown中完美插入数学公式
-
-Late">
+线性回归（Linear Regressio">
     
 
     <!--Author-->
@@ -33,7 +26,7 @@ Late">
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="My Archives"/>
+        <meta property="og:title" content="最小二乘法到线性回归到逻辑回归再到梯度下降算法"/>
     
 
     <!--Open Graph Description-->
@@ -55,7 +48,7 @@ Late">
 
     <!-- Title -->
     
-    <title>My Archives - An&#39;s Blog</title>
+    <title>最小二乘法到线性回归到逻辑回归再到梯度下降算法 - An&#39;s Blog</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
@@ -184,13 +177,13 @@ Late">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <div class="post-heading">
-                    <h1>My Archives</h1>
+                    <h1>最小二乘法到线性回归到逻辑回归再到梯度下降算法</h1>
                     
                     <span class="meta">
                         <!-- Date and Author -->
                         
                         
-                            2017.11.10
+                            2017.06.07
                         
                     </span>
                 </div>
@@ -210,7 +203,7 @@ Late">
                     
                         
 
-<a href="/categories/Introduction/">Introduction</a>
+<a href="/categories/Algorithm/">Algorithm</a>
 
                     
                 </div>
@@ -224,21 +217,83 @@ Late">
 
             <!-- Post Main Content -->
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <h1 id="My-Topics"><a href="#My-Topics" class="headerlink" title="My Topics"></a>My Topics</h1><h2 id="Data-Structure-amp-Algorithms"><a href="#Data-Structure-amp-Algorithms" class="headerlink" title="Data Structure &amp; Algorithms"></a>Data Structure &amp; Algorithms</h2><ul>
-<li><p><a href="http://www.jianshu.com/p/eadffef6c81c" target="_blank" rel="external">七大排序算法解析与Python实现</a></p>
+                <p>读<a href="https://mp.weixin.qq.com/s/d-Bz2mjiJ9iDLTnnDx9Wmg" target="_blank" rel="external">这篇文章</a>有感。<br>我来总结一下，便于记忆。</p>
+<ul>
+<li>最小二乘法（Least Square Method）适用于二维空间，用直线 y=ax+b 对二维空间（平面）的数据进行拟合。将true label与直线评测出的值的<strong>偏差的平方和</strong>作为最小条件来选择参数a，b。</li>
+</ul>
+<p><img src="http://upload-images.jianshu.io/upload_images/8741154-d45e52bd9b26869d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="最小二乘法"></p>
+<ul>
+<li>线性回归（Linear Regression）将最小二乘法拓展到多维空间，用超平面 y=<strong><em>W</em></strong>x+<strong><em>b</em></strong> 对多维空间的数据进行拟合。 与最小二乘法类似，将true label与超平面评测出的值的<strong>偏差的平方和</strong>作为最小条件来选择参数<strong><em>W</em></strong>，<strong><em>b</em></strong>。</li>
+</ul>
+<p><img src="http://upload-images.jianshu.io/upload_images/8741154-9d04b79d44b5e1a4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="线性回归"></p>
+<ul>
+<li>逻辑回归（Logistics Regression）仅仅是在线性回归模型外面加了一层映射函数（sigmoid函数）。逻辑回归其实是一种分类模型!<br><a href="http://upload-images.jianshu.io/upload_images/8741154-35806bbafeba079e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" target="_blank" rel="external">sigmoid函数</a>其中，z=<strong><em>W</em></strong>x+<strong><em>b</em></strong>(线性回归模型)，若z很大，则f(z) ≈1；若z很小，则f(z)≈0。</li>
+</ul>
+<blockquote>
+<p>二分类问题中使用sigmoid函数，多分类问题中使用softmax函数。</p>
+</blockquote>
+<h1 id="逻辑回归模型详解"><a href="#逻辑回归模型详解" class="headerlink" title="逻辑回归模型详解"></a>逻辑回归模型详解</h1><h3 id="逻辑回归模型的成本函数推导："><a href="#逻辑回归模型的成本函数推导：" class="headerlink" title="逻辑回归模型的成本函数推导："></a>逻辑回归模型的成本函数推导：</h3><p><img src="http://upload-images.jianshu.io/upload_images/8741154-ea668c1a2b4e6247.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="逻辑回归模型的成本函数推导过程"></p>
+<p>可以看到，此处用了<strong><em>交叉熵损失函数</em></strong>来作为成本函数。</p>
+<h4 id="那么为什么使用交叉熵而不是二次代价函数（最小二乘法）来定义呢？"><a href="#那么为什么使用交叉熵而不是二次代价函数（最小二乘法）来定义呢？" class="headerlink" title="那么为什么使用交叉熵而不是二次代价函数（最小二乘法）来定义呢？"></a>那么为什么使用交叉熵而不是二次代价函数（最小二乘法）来定义呢？</h4><p>原因如下：</p>
+<ul>
+<li><p>为什么不用二次代价函数？</p>
+<ul>
+<li>对于多元函数，由于变量过多，用最小二乘法定义的成本函数（损失函数）并不是在整个集合上都是凸函数，很难进行优化。</li>
+<li>由于逻辑回归模型使用了sigmoid函数作为激活函数，根据sigmoid函数的性质，函数值趋近于0和1的时候梯度值过小，会导致在后续梯度下降算法中参数收敛速度过慢。</li>
+</ul>
 </li>
-<li><p><a href="http://www.jianshu.com/p/320952d14632" target="_blank" rel="external">字符串匹配Python解析</a></p>
+<li><p>为什么用交叉熵损失函数？</p>
+<ul>
+<li>交叉熵代价函数的两个性质<ul>
+<li>非负性（所以我们的目标就是最小化代价函数）</li>
+<li>当true label与预测值接近时，代价函数接近于0</li>
+</ul>
 </li>
-<li><p><a href="http://www.jianshu.com/p/dda3ded6c860" target="_blank" rel="external">栈与队列的list实现</a></p>
+<li>可以克服二次代价函数更新过慢的问题。根据梯度下降算法可知，当误差大的时候参数更新越快；误差小的时候参数更新越慢。</li>
+</ul>
 </li>
 </ul>
-<h2 id="Complie-Skills"><a href="#Complie-Skills" class="headerlink" title="Complie Skills"></a>Complie Skills</h2><ul>
-<li><p><a href="http://www.jianshu.com/p/a35e05d0d55d" target="_blank" rel="external">Hexo搭建博客并发布到github</a></p>
+<h3 id="优化算法（成本函数最小化方法）："><a href="#优化算法（成本函数最小化方法）：" class="headerlink" title="优化算法（成本函数最小化方法）："></a>优化算法（成本函数最小化方法）：</h3><p>采用<strong><em>随机梯度下降</em></strong>方法来最小化交叉熵成本函数。</p>
+<blockquote>
+<p>梯度下降（Gradient Descent）：朝着梯度的反方向迭代地调整参数直到收敛。</p>
+</blockquote>
+<p><strong><em>Note：</em></strong><br>梯度下降的几何意义描述：梯度下降实际上是一个“下坡”的过程。在每一个点上，我们希望往下走一步（假设一步为固定值0.5米），使得下降的高度最大，那么我们就要选择坡度变化率最大的方向往下走，这个方向就是成本函数在这一点梯度的反方向。每走一步，我们都要重新计算函数在当前点的梯度，然后选择梯度的反方向作为走下去的方向。随着每一步迭代，梯度不断地减小，到最后减小为零。</p>
+<blockquote>
+<p>梯度的反方向是函数值下降最快的方向，故用<strong>梯度下降法</strong>寻找局部最小值，梯度的方向是函数值上升最快的方向，故用<strong>梯度上升法</strong>寻找局部最大值。</p>
+</blockquote>
+<p><strong>梯度下降图解：</strong></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/8741154-2c60415ef129337a.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="梯度下降"></p>
+<p><em>参数的更新公式为</em><br><img src="http://upload-images.jianshu.io/upload_images/8741154-718dc48cfcfde042.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="参数更新"></p>
+<h3 id="梯度下降法详解"><a href="#梯度下降法详解" class="headerlink" title="梯度下降法详解"></a>梯度下降法详解</h3><p><strong>随机梯度下降（Stochastic Gradient Descent）</strong>：</p>
+<p>最小化每条样本的损失函数。</p>
+<ul>
+<li><p>优点：收敛速度快。虽然不是每次迭代得到的损失函数都向着全局最优方向， 但是大的整体的方向是向全局最优解的，最终的结果往往是在全局最优解附近。</p>
 </li>
-<li><p><a href="http://www.jianshu.com/p/054484d0892a" target="_blank" rel="external">如何在markdown中完美插入数学公式</a></p>
+<li><p>缺点：因为计算得到的并不是准确的一个梯度，容易陷入到局部最优解中。</p>
 </li>
-<li><p><a href="http://www.jianshu.com/p/7227056c610b" target="_blank" rel="external">Latex常用编辑语法</a></p>
-</li>
+</ul>
+<p><strong>批量梯度下降（Batch Gradient Descent）</strong>：</p>
+<p>最小化所有训练样本的损失函数，使得最终求解的是全局的最优解，即求解的参数是使得风险函数最小。</p>
+<ul>
+<li>优点：得到的是一个全局最优解</li>
+<li>缺点：每迭代一步，都要用到训练集所有的数据，如果数据集很大，这种方法的迭代速度会很慢。</li>
+</ul>
+<hr>
+<p><strong><em>对比：</em></strong>  </p>
+<p><strong>随机梯度下降</strong>是通过每个样本来迭代更新一次，如果样本量很大的情况（例如几十万），那么可能只用其中几万条或者几千条的样本，就已经将theta迭代到最优解了，对比<strong>批量梯度下降</strong>，迭代一次需要用到几十万训练样本，一次迭代不可能最优，如果迭代10次的话就需要遍历训练样本10次。但是，SGD伴随的一个问题是噪音较BGD要多，使得SGD并不是每次迭代都向着整体最优化方向。</p>
+<hr>
+<p><strong><em>Mini-batch梯度下降</em></strong></p>
+<p>这是介于BSD和SGD之间的一种优化算法。每次选取一定量的训练样本进行迭代。此算法是将批量梯度下降法中m替换成mini-batch，将mini-bach的size设置为远小于m的大小。<br>在吴恩达的机器学习课程中讲到可以将m使用b来代替，循环m/b次直到收敛或是循环次数达到。</p>
+<ul>
+<li>优点：得到的是一个局部近似解，但是其所计算的时间和效果要比随机梯度下降法的好。</li>
+<li>缺点：但是在计算时候多了一个参数 b （即每批的大小）需要去调试。</li>
+</ul>
+<p><strong><em>带Mini-batch的随机梯度下降</em></strong></p>
+<ul>
+<li>选择n个训练样本（n&lt;m，m为总训练集样本数）</li>
+<li>在这n个样本中进行n次迭代，即每次使用1个样本</li>
+<li>对n次迭代得出的n个gradient进行加权平均再并求和，作为这一次mini-batch下降梯度</li>
+<li>不断在训练集中重复以上步骤，直到收敛。</li>
 </ul>
 
 
@@ -264,7 +319,7 @@ Late">
         }(document, 'script', 'facebook-jssdk'));
     </script>
 
-    <div class="fb-comments" data-href="http://yoursite.com/2017/11/10/My Archives/index.html" data-num-posts="5" data-width="100%" data-colorscheme="light"></div>
+    <div class="fb-comments" data-href="http://yoursite.com/2017/06/07/逻辑回归模型详解/index.html" data-num-posts="5" data-width="100%" data-colorscheme="light"></div>
 
                 </div>
             
