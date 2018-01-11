@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="ニューラルネットワークと深層学習Materials of 18th chapter of 「Computer Age Statistical Inference」 （PDF version at P369）背景深層学習(Deep Learning)とは、機械学習の1種である「ニューラルネットワーク（">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="An Jingjing">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Neural Network and Deep Learning"/>
+    
+
+    <!--Open Graph Description-->
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="An&#39;s Blog"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+        <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>Neural Network and Deep Learning - An&#39;s Blog</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Google Analytics -->
+    
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-109494500-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+
+
+
+    <!-- favicon -->
+    
+	
+</head>
+
+
+<body>
+
+    <!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Logical World</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="/">
+                            
+                                Home
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/archives">
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags">
+                            
+                                Tags
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories">
+                            
+                                Categories
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="http://www.jianshu.com/u/fd50a7c19306">
+                            
+                                My Jianshu
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="https://www.zhihu.com/people/crystalajj">
+                            
+                                My Zhihu
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('http://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>Neural Network and Deep Learning</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2018.01.10
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+<a href="/categories/Deep-Learning/">Deep Learning</a>
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                </div>
+            
+
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
+
+
+
+<h1 id="ニューラルネットワークと深層学習"><a href="#ニューラルネットワークと深層学習" class="headerlink" title="ニューラルネットワークと深層学習"></a><strong>ニューラルネットワークと深層学習</strong></h1><h3 id="Materials-of-18th-chapter-of-「Computer-Age-Statistical-Inference」-（PDF-version-at-P369）"><a href="#Materials-of-18th-chapter-of-「Computer-Age-Statistical-Inference」-（PDF-version-at-P369）" class="headerlink" title="Materials of 18th chapter of 「Computer Age Statistical Inference」 （PDF version at P369）"></a>Materials of 18th chapter of <strong>「Computer Age Statistical Inference」</strong> （PDF version at P369）</h3><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>深層学習(Deep Learning)とは、機械学習の1種である「ニューラルネットワーク（Neural Network）」の階層を深めたアルゴリズムです。</p>
+<p>まず、ニューラルネットワークを紹介します．ニューラルネットワークとは、生物の脳の神経細胞（ニューロン）をモデルとしたアルゴリズムで、1940年代から始まる長い研究の歴史があります。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/8741154-4c5399eacf3fa941.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="18.1"></p>
+<p>18.1の図が示した構造は、フィードフォワードニューラルネットワーク(feedforward neural networks)と呼ばれます。これはネットワーク内にループがないということを意味しています。情報は常に前へ伝わり、後ろへは戻りません。このニューラルネットワークは、「入力層」、「隠れ層」、「出力層」と各層を持ち、各層は複数の「ノード（もしくはユニット）」が「エッジ」で結ばれる構造となっています。<strong>この隠れ層は複数の層を持つことができ、特に深い隠れ層を持つものを深層学習（ディープラーニング）と呼んでいます。</strong></p>
+<p>各層は「活性化関数」と呼ばれる関数を持ち、エッジは「重み」を持つことができます。そして各ノードの値は、そのノードと接続する前の層のノードの値から計算します。すなわち、前の層のノードの値、接続エッジの重みの値、そして層が持つ活性化関数から計算します。</p>
+<p>ニューラルネットの学習の流れは以下のとおりである.</p>
+<ol>
+<li>教師データを入力層に入力し, 各ニューロセルが計算した値を次の層に渡す. これを出力層が値を出力するまで行う.</li>
+<li>出力層からの出力と教師データのデータラベルの誤差を求める.</li>
+<li>求まった誤差を出力層から入力層に伝播させ, 各ニューロセルがパラメタを更新する.</li>
+</ol>
+<p>ここで1.の過程を順伝播と呼び, 3.の過程を誤差の逆伝播と呼ぶ.</p>
+<hr>
+<p>以下の図のように示した構造を例として、大雑把に順伝播の計算方法を説明します。<br><img src="http://upload-images.jianshu.io/upload_images/8741154-1073b60bc4b85136.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><strong>符号の準備</strong></p>
+<p>\(x_j\) —— 入力（inputs,predictors）,j=1,2,…,p(pは入力層のpredictorsの数と表す)</p>
+<p>\(a_l\) —— 隠れ層のユニット（hidden units）, l=1,2,…,m(mは隠れ層のユニット（ニューロン）の数)</p>
+<p>\(a^{(2)}_l\) —— 第二層の隠れ層のユニット（hidden units in second layer）</p>
+<p>\(o\) —— 出力層のユニット（output units）</p>
+<p>\(w^{(1)}\) —— 第一層の重み</p>
+<p>\(w^{(1)}_{lj}\) —— weights between input xj and hidden unit al</p>
+<p>\(w^{(1)}_{l0}\) —— 第一層のバイアス</p>
+<p>\(w^{(2)}_{l0}\) —— 第二層のバイアス</p>
+<p>function g —— 隠れ層の活性化関数</p>
+<p>function h —— 出力層の活性化関数</p>
+<p><strong>計算の説明</strong></p>
+<p>データが入力層に入ってくると、その値に重み\(w^{(1)}\)をかけ、バイアスを加え、隠れ層の活性化関数gを用いて、隠れ層のユニット\(a_l\)に結果を出力する。</p>
+<p><a href="http://www.codecogs.com/eqnedit.php?latex=a_l&space;=&space;g(w^{(1)}_{l0}&space;&plus;&space;\sum_{j=1}^{4}w^{(1)}_{lj}x_j)" target="_blank"><img src="http://latex.codecogs.com/gif.latex?a_l&space;=&space;g(w^{(1)}_{l0}&space;&plus;&space;\sum_{j=1}^{4}w^{(1)}_{lj}x_j)" title="a_l = g(w^{(1)}_{l0} + \sum_{j=1}^{4}w^{(1)}_{lj}x_j)"></a></p>
+<p>そして今度は、先ほど計算した\(a_l\)の値を入力として重み\(w^{(2)}\)をかけ、バイアスを加え、出力層の活性化関数hを用いて、出力層のユニットOに書き出す。重み\(w^{(1)}\)および\(w^{(2)}\)の値によって出力結果は異なってくる。</p>
+<p><a href="http://www.codecogs.com/eqnedit.php?latex=o&space;=&space;h(w^{(2)}_{0}&plus;\sum_{l=1}^{5}w^{(2)}_{l}a_l)" target="_blank"><img src="http://latex.codecogs.com/gif.latex?o&space;=&space;h(w^{(2)}_{0}&plus;\sum_{l=1}^{5}w^{(2)}_{l}a_l)" title="o = h(w^{(2)}_{0}+\sum_{l=1}^{5}w^{(2)}_{l}a_l)"></a></p>
+<p>たとえば、oが0.8という出力になったとします。しかし本当はoの出力を0.5にしたい場合、一体どうすればよいでしょうか？その結果に近づけるために、重みの\(w^{(1)}\)と\(w^{(2)}\)を調整していけばよいのです。調整する方法(誤差の逆伝播)はのちほど（18.2セクション）述べます。</p>
+<p><strong>活性化関数</strong></p>
+<p><strong>隠れ層の活性化関数g</strong>は、一般的には非線形な関数である、例えば、sigmoid関数。<em>隠れ層の活性化関数gは、非線形な関数では無い場合、このニューラルネットワークは一般的な線形モデルになります。</em></p>
+<p><strong>出力層の活性化関数h</strong>は、定量回帰（Quantitative regression）の場合、一般的に恒等関数（identity function）を選びますが、二項分類（binary classification）の場合、一般的にsigmoid関数を選びます。</p>
+<hr>
+<h2 id="18-1-ニューラルネットワークと手書き数字問題"><a href="#18-1-ニューラルネットワークと手書き数字問題" class="headerlink" title="18.1 ニューラルネットワークと手書き数字問題"></a>18.1 ニューラルネットワークと手書き数字問題</h2><p>ニューラルネットワークは、手書き数字問題から出ってきましたと言われいます．これから、手書き数字認識の実験を例として、ニューラルネットワークを詳細に述べます．</p>
+<p><strong>実験の目的</strong>としては、画像を見てどの数字であるか予測できるようにモデルを学習します．</p>
+<p>実験用のデータセットは、MNISTと呼ばれる手書き数字データセット（7万個の手書きの数字(0～9)にそれぞれ正解ラベルが与えられている）を用います．中身は以下の図と表します．</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/8741154-dd5135bffcb302ab.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><strong>実験の流れ</strong>としては、データーの前処理とニューラルネットの構築になります．</p>
+<ul>
+<li>データーの前処理</li>
+</ul>
+<p>先に言及したように、全ての MNIST データポイントは２つのパートを持ちます : 手書き数字の画像と該当ラベルです。画像を “x” そしてラベルを “y” と呼ぶことにします。各画像は 28 ピクセル x 28 ピクセルです。これは数値の大きな配列と解釈することができます。</p>
+<center><br>    <img src="https://ujwlkarn.files.wordpress.com/2016/08/8-gif.gif?w=192&h=192"><br></center>
+
+<p>この配列を 28 x 28 = 784 数値のベクタに平坦化できます。28*28の画像データでは784次元の配列データが入力となる（そのため，ニューラルネットの入力層は784個となる）。</p>
+<p>MNIST の該当するラベルは 0 から 9 の間の数字で、与えられた画像がどの数字であるかを示します。そのラベルは “one-hot ベクタ” であることに変換します。one-hot ベクタはほとんどの次元で 0 で、一つの次元で 1 であるベクタです。この場合、n 番目の数字は n 番目の次元が 1 のベクタとして表されます。例えば、3 は [0,0,0,1,0,0,0,0,0,0] になります。</p>
+<ul>
+<li>ニューラルネットの構築</li>
+</ul>
+<p>この本には、以下のようなニューラルネットを構築し, 手書き数字の学習を行う．</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/8741154-8c2eccd58c17d99b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>このニューラルネットワークは、入力層と三層の隠れ層と出力層を用います．先に言及したように、28*28の画像データでは784次元の配列データが入力となるのため，ニューラルネットの入力層は784個となる．つまり、p＝784. ニューラルネットの出力層は望む出力の個数で良いため, 0～9の数字の個数である10個となる. <code>y0,y1,....y9</code>はそれぞれ<code>0,1,....9</code>である確率です．続いて, 隠れ層が多くなればその分学習に時間がかかるが, 少なすぎても十分な学習ができないため, この本には、三層でそれぞれ1024,1024,2048個で学習を行わせている.</p>
+<p>順伝播の計算手法が、その前大雑把に説明しましたが、ここでさらに<br>一般的な記法を定義します．</p>
+<p>zは、単に各隠れ層のユニットに対して活性化函数を加える前の状態を表す．</p>
+<p>つまり、第二層では</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/8741154-8dba2de4f1f4b2c7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>があります．</p>
+<p>さらに一般的には、第k層では</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/8741154-1bcf299c943339ab.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>があります．</p>
+<p>ここで、<br><img src="http://upload-images.jianshu.io/upload_images/8741154-b458f62c5426bc41.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="">と見なすと、少し整理すると、以下になります．</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/8741154-3d0a0c1411002d3e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>整理の詳細は以下の図に参考してください．</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/8741154-883fcd633b094e06.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="証明"></p>
+<p>最後に、出力層の活性化函数はsoftmax函数を選びます．その函数は、各成分(M-class classification)が、そのクラスに属する確率を変換(各成分の確率の和が１になる)できます．</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/8741154-7f7b90d3a11eb7c0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>ここで、「ラベルは1つの成分のみが1の値を取り、ほかの成分は0である」、すなわちすべての成分の和が必ず1であるということを思い出しましょう．もし出力では7番目の成分が最も大きな値なので、おそらく新しいデータは7番目のクラスに属するであろうと判断することにします。</p>
+<h2 id="18-2-ニューラルネットワークによるデータのあてはめ"><a href="#18-2-ニューラルネットワークによるデータのあてはめ" class="headerlink" title="18.2 ニューラルネットワークによるデータのあてはめ"></a>18.2 ニューラルネットワークによるデータのあてはめ</h2><p>訓練セット<img src="http://upload-images.jianshu.io/upload_images/8741154-63422f2315ecaa0c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png">とロスト函数L(y,f(x))に対して、ニューラルネットワークモデルの全体のロスト函数は公式18.8で表す．</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/8741154-7bb6a537c31a0f8f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>xは特徴ベクトルで、つまり、モデルの入力ベクトルで、Wは重みで表します．18.1セクション述べた活性化函数g(・)が違う場合、函数f(x,W)が違うわけです．J(W)は正数の正則タームで、\(\Upsilon&gt;=0\)は調節できるパラメーターです．実際には、複数の正則タームがあることが多くて、その時各正則タームがそれぞれ自分のパラメーター\(\Upsilon\)が持つ．例えば、リッジ回帰では(ridge regression)、以下のような正則タームが使用する：<br><img src="http://upload-images.jianshu.io/upload_images/8741154-9efc5aed939258f3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>公式18.8の全体のロスト函数の解をとるため、勾配降下法(gradient descent)に基づいた提案手法がよく使われている．</p>
+<p>これからそれぞれ「勾配の計算：誤差逆伝播法」、「勾配降下法」と「確率勾配降下法」を説明する．</p>
+<p>その前に、勾配降下法の直感的なイメージをあげる．</p>
+<p>勾配降下法がやりたいことは、ロスト函数J(w,b)が最小になっている部分に対応するwとbの値を見つけることです．</p>
+<center><br>    <img src="http://upload-images.jianshu.io/upload_images/8741154-4531481f2d18ce15.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br></center>
+
+
+<p>これは勾配降下法の説明の図です。この図において、水平方向の軸は、パラメータwとbを表しています．実際に使うときに、wはもっと高次元になりますが、グラフ化するにあたって、wを一つの実数として、bも一つの実数としておきましょう．コスト関数J(w,b)は、水平方向の軸wとbの上にある曲面となります．曲面の高さは、ある一点におけるJ(w,b)の値を示します．コスト関数J(w,b)はとつ関数なので、凸の形であることがわかります。なので、これはただの大きなお椀のようなものです。パラメータとして良い値を見つけるために、まずwとbを何らかの値に初期化します．その初期値を一番上の小さな赤い点で示します。勾配降下法は、この初期値の点から出発し、最も下りの勾配が急になる方向に一歩進みます。なぜなら下りの勾配が最も激しくなる方向、つまり最速で坂を下れる方向に進もうとするからです。これが、何回繰り返すことで、最終的な解が最適解の近くに収束します．</p>
+<p>それから、勾配降下法について詳細に説明します．</p>
+<h3 id="勾配の計算：誤差逆伝播法-Backpropagation"><a href="#勾配の計算：誤差逆伝播法-Backpropagation" class="headerlink" title="勾配の計算：誤差逆伝播法(Backpropagation)"></a>勾配の計算：誤差逆伝播法(Backpropagation)</h3><p>18.1セクションの符号を従って、以下の図を用いて誤差逆伝播法の原理を説明します。<br><img src="http://upload-images.jianshu.io/upload_images/8741154-ae222d7c4eb01e56.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>ここで、Eは出力値\(a^{4}_{1}\とターゲット値yの誤差と表します．今ロスト函数はクロスエントロピーにします．<br><img src="http://upload-images.jianshu.io/upload_images/8741154-3e1f8f02019bca2c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="1.png"></p>
+<p>活性化函数はsigmoid函数にします．sigmoid函数の微分は良い形になってます．</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/8741154-e967ff3798c67bfd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>多層パーセプトロンの出力を入力層から順に出力層まで計算していったのとは逆に，Backpropでは出力層から入力層に向かって順に勾配を計算していきます．</p>
+<p>まず最初に出力層の\(z^{4}_{1}\と誤差の微分から計算しましょう．</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/8741154-bce7bb103e90a54a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>で次に出力層とそれにつながる隠れ層との間の重みに関する損失関数の微分を計算します．</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/8741154-934775eba8f314d2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>ここで、連鎖律により、<img src="http://upload-images.jianshu.io/upload_images/8741154-07edb2a98d8cc97a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png">が知ります．</p>
+<p>で次に隠れ層の\(a^{(2)}\はそれぞれ二つの射影が持っていて、その二つの微分を合わせば良い．</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/8741154-2e0565a9a38a2094.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>そのような計算で、出力層から入力層に向かって順に勾配を計算していきます．</p>
+<p>符号を簡易化するため、以下のように表す．<br><img src="http://upload-images.jianshu.io/upload_images/8741154-1a79f381910408de.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<h3 id="勾配降下法"><a href="#勾配降下法" class="headerlink" title="勾配降下法"></a>勾配降下法</h3><center><br>    <img src="http://upload-images.jianshu.io/upload_images/8741154-116b11cb56c725d8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br></center>
+
+<p>この図のような、横軸をある1つの重みw 、縦軸を2乗誤差Eとしたグラフを考えてみましょう。Eが最小となるような重みを\(w^{opt}\)とし、現在の重みの値を\(w^{old}\)とします。このとき、学習によって\(w^{old}\)から\(w^{opt}\)へ近づくように重みの更新が行わなければいけません。そこで、\(w^{old}\)の地点での傾きから、変更量⊿wを求め、新たな重み\(w^{opt}\)を求めます。 </p>
+<p><img src="http://upload-images.jianshu.io/upload_images/8741154-229914aeaa040896.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>この傾きは偏微分を使って、次のように表すことができます。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/8741154-a6214a29f75b7f4b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>その図のように傾きの符号が正のときwを減少(変更量が負)させ、負のときは wを増加させます。したがって、変更量は係数ηを使って、</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/8741154-0def40d867ef63a0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>と表すことができます。これを繰り返すことで、\(w^{opt}\)に近づいていきます。このような方法を勾配法といいます。</p>
+<p>誤差逆伝播法から計算した結果に基づいて、変更量⊿wを求められます．</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/8741154-b3f38abacc9484c9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<h3 id="確率勾配降下法"><a href="#確率勾配降下法" class="headerlink" title="確率勾配降下法"></a>確率勾配降下法</h3><p>データ数が多くなると、変更量⊿wの計算が非常に大変です。ですので、確率勾配降下法が登場しました．</p>
+<p>確率勾配降下法では、勾配の計算に、全データの誤差の和Eでもなく、１つのデータの誤差E_{i}でもなく、いくつかのデータの誤差の和を使う方法です。この方法を、ミニバッチ勾配降下法と言うことがあります。</p>
+<h2 id="18-3-オートエンコーダ"><a href="#18-3-オートエンコーダ" class="headerlink" title="18.3 オートエンコーダ"></a>18.3 オートエンコーダ</h2><p>オートエンコーダ（自己符号化器）とは、機械学習において、ニューラルネットワークを使用した次元圧縮のためのアルゴリズム。</p>
+<p>オートエンコーダは3層ニューラルネットにおいて、入力層と出力層に同じデータを用いて教師あり学習させたものである。バックプロパゲーションの特殊な場合と言える。学習は、バックプロパゲーションで行うため非線形最適化問題となる。中間層と出力層の活性化関数はそれぞれ任意に選ぶことができる。教師データが実数値で値域がない場合、出力層の活性化関数は恒等写像が選ばれる（つまり何も変化させない）ことが多い。中間層の活性化関数も恒等写像を選ぶと結果は主成分分析とほぼ一致する。</p>
+<h2 id="18-4-深層学習"><a href="#18-4-深層学習" class="headerlink" title="18.4 深層学習"></a>18.4 深層学習</h2><p>深層学習・ディープラーニングには「CNN（Convolution Neural Network）」や「RNN（Recurrent Neural Network）」などがあります。この本はCNNのアーキテクチャーを紹介します。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/8741154-ec1d65f2c473b79f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/8741154-3127f9475ce3702b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>CNNでは、上図のように隠れ層は「畳み込み層」と「プーリング層」で構成されます。畳み込み層は、前の層で近くにあるノードにフィルタ処理して「特徴マップ」を得ます。プーリング層は、畳込み層から出力された特徴マップを、さらに縮小して新たな特徴マップとします。この際に着目する領域のどの値を用いるかですが、上図のように最大値を得ることで、画像の多少のずれも吸収されます。したがって、この処理により画像の位置移動に対する普遍性を獲得したことになります。</p>
+<p>畳み込み層は画像の局所的な特徴を抽出し、プーリング層は局所的な特徴をまとめあげる処理をしています。つまり、これらの処理の意味するところは、入力画像の特徴を維持しながら画像を縮小処理していることになります。今までの画像縮小処理と異なるところは、画像の特徴を維持しながら画像の持つ情報量を大幅に圧縮できるところだと思います。これを言い換えると、画像の「抽象化」とも言えます。これは画期的なことだと思っています。ネットワークに記憶された、この抽象化された画像イメージを用いて、入力される画像を認識、つまり画像の分類をすることができるのです。</p>
+<p>それから、「畳み込み層」、「プーリング層」と「全結合層」の計算方法についてそれぞれ説明します．</p>
+<h3 id="「畳み込み層」"><a href="#「畳み込み層」" class="headerlink" title="「畳み込み層」"></a>「畳み込み層」</h3><p>5ピクセル*5ピクセルのグレイスケールイメージを考えましょう．</p>
+<center><br>    <img src="http://upload-images.jianshu.io/upload_images/8741154-fb7135b9f0cfd7b7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br></center>
+
+<p>3*3のフィルターを考えましょう．</p>
+<center><br>    <img src="http://upload-images.jianshu.io/upload_images/8741154-a621c71940bc133f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br></center>
+
+<p>畳み込みで行われる計算は、以下の動画のように示す．</p>
+<center><br>    <img src="https://ujwlkarn.files.wordpress.com/2016/07/convolution_schematic.gif?w=268&h=196"><br></center>
+
+<p>フィルタの値が異なると、同じ入力画像に対して異なるフィーチャマップが生成されます。例として、このイメージを考えてみましょう。</p>
+<center><br>    <img src="http://upload-images.jianshu.io/upload_images/8741154-e59c1b6b3d2c7708.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br></center>
+
+<p>下の表では、上記の画像をさまざまなフィルタで畳み込む効果を確認できます。図に示すように、畳み込み演算の前にフィルタ行列の数値を変更するだけで、鮮明化、ぼかしなどの操作を実行できます。</p>
+<center><br>    <img src="http://upload-images.jianshu.io/upload_images/8741154-d91b46b4ea421854.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br></center>
+
+<h3 id="「プーリング層」"><a href="#「プーリング層」" class="headerlink" title="「プーリング層」"></a>「プーリング層」</h3><p>空間プーリングは、各フィーチャマップの次元を減らしますが、最も重要な情報を保持します。空間プーリングは、Max、Average、Sumなどの異なるタイプのものがあります。</p>
+<p>Max Poolingの場合、2×2ウィンドウを考えましょう．計算方法は以下の図のように示す．</p>
+<center><br>    <img src="http://upload-images.jianshu.io/upload_images/8741154-82e98ff143ec47e1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br></center>
+
+
+<p>最大の要素を取る代わりに、そのウィンドウ内のすべての要素の平均（平均プール）または合計を取ることもできます。実際には、Max Poolingはより良く動作することが示されています。</p>
+<h3 id="「全結合層」"><a href="#「全結合層」" class="headerlink" title="「全結合層」"></a>「全結合層」</h3><p>畳み込み層およびプール層からの出力は高レベルの特徴を持つ。全結合層の目的は、トレーニングデータセットに基づいて入力画像を用いてさまざまなクラスに分類することです。</p>
+<p>分類の機能以外に、全結合層を追加することは、これらの特徴の非線形の組み合わせを学習できる。畳み込み層とプール層からの特徴の大部分は分類タスクにとっては良いかもしれないが、それらの特徴の組み合わせはより良いかもしれない．</p>
+<p>全結合層からの出力確率の合計は1である。これは、全結合層の出力層における活性化関数Softmaxを使用することによって保証される。Softmax関数は、任意の実数値スコアのベクトルをとり、その和に0と1との間の値のベクトルに縮小する函数です。</p>
+<h3 id="CNNの可視化"><a href="#CNNの可視化" class="headerlink" title="CNNの可視化"></a>CNNの可視化</h3><p><a href="http://scs.ryerson.ca/~aharley/vis/conv/" target="_blank" rel="external">手書き数字のCNN構造可視化</a></p>
+<p>Note: <a href="https://ujjwalkarn.me/2016/08/11/intuitive-explanation-convnets/" target="_blank" rel="external">参考プラスおすすめblog</a></p>
+<h2 id="18-5-Learning-a-Deep-Network"><a href="#18-5-Learning-a-Deep-Network" class="headerlink" title="18.5 Learning a Deep Network"></a>18.5 Learning a Deep Network</h2><h3 id="Dropout"><a href="#Dropout" class="headerlink" title="Dropout"></a>Dropout</h3><p>ニューラルネットは複雑なモデルであるため過学習に陥りやすいです. これを回避するためにはL2ノルムで値の増加を防(ふせ)いだり, L1ノルムでスパースにしたりするのが一般的です.</p>
+<p>しかし正則化でもニューラルネットのような複雑なモデルに適切に制約を加えるのは困難です.</p>
+<p>そこでDropoutの考え方です. Dropoutは各訓練データに対して中間素子をランダムに50%（または任意の確率で）無視しながら学習を進めます. 推定時は素子の出力を半分にします.</p>
+<center><br>    <img src="http://upload-images.jianshu.io/upload_images/8741154-06c026338f0cbb8b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br></center>
+
+
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+    <hr />
+    <h3>Kommentare:</h3>
+    <div id="fb-root"></div>
+    <script>
+        (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=824671024381046";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+
+    <div class="fb-comments" data-href="http://yoursite.com/2018/01/10/NN_DL/index.html" data-num-posts="5" data-width="100%" data-colorscheme="light"></div>
+
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+    <!-- Footer -->
+    <hr />
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+
+                    
+                        <li>
+                            <a href="https://www.facebook.com/AnJingjing511" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+                        <li>
+                            <a href="https://github.com/crystalajj" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+
+                    
+
+                    
+                </ul>
+                <p class="copyright text-muted">&copy; 2018 An Jingjing<br></p>
+                <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
+                <p class="copyright text-muted">Adapted for <a target="_blank" href="https://hexo.io/">Hexo</a> by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>
